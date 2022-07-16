@@ -172,3 +172,23 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AMARILLO = "\033[;33m"
 CIAN = "\033[;36m"
 VERDE = "\033[;32m"
+
+# NOTE: Para manejo de sesión.
+LOGIN_URL = '/admin/login'
+
+
+# API DOCS Settings:
+SWAGGER_SETTINGS = {
+    'SECURITY_DEFINITIONS': {
+        'basic': {
+            'type': 'basic'
+        }
+    },
+    "USE_SESSION_AUTH": True,
+    'LOGIN_URL': LOGIN_URL,
+    'LOGOUT_URL': '/admin/logout'
+}
+
+REDOC_SETTINGS = {
+   'LAZY_RENDERING': False,
+}
