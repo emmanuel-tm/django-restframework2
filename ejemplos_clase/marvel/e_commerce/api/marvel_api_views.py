@@ -31,10 +31,12 @@ PARAMS = dict(ts=TS, apikey=PUBLIC_KEY, hash=HASHED.hexdigest())
 @api_view(['GET'])
 def get_comics(request):
     '''
+    ```
     Vista personalizada de API para comprar comics, 
     primero consultamos los comics disponibles en la página de Marvel, 
     luego generamos una lista de los que tienen precio y descripción, 
     porque varios vienen `null`.
+    ```
     '''
     # Declaramos nuestras variables:
     id = []
@@ -163,10 +165,6 @@ def get_comics(request):
 
 
 @csrf_exempt
-# NOTE: Agregamos los siguientes 2 decoradores
-# para que Swagger los tome:
-@swagger_auto_schema(methods=['get'])
-@api_view(['GET'])
 def purchased_item(request):
     '''Incluye la lógica de guardar lo pedido en la base de datos 
     y devuelve el detalle de lo adquirido '''
