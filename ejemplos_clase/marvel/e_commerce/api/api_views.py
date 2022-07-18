@@ -160,8 +160,10 @@ class LoginUserAPIView(APIView):
     # el body de la request y los responses
     # que muestra como ejemplo el Swagger para
     # este método.
+
     # NOTE 2: Descomentar dicho decorador para
     # mostrarlo en clase.
+
     # @swagger_auto_schema(
     #     request_body=openapi.Schema(
     #         type=openapi.TYPE_OBJECT, 
@@ -183,7 +185,7 @@ class LoginUserAPIView(APIView):
     #             examples={
     #                 "application/json": {
     #                     "user_id": 1,
-    #                     "username": "root",
+    #                     "username": "username",
     #                     "first_name": "first_name",
     #                     "last_name": "last_name",
     #                     "email": "email@email.com",

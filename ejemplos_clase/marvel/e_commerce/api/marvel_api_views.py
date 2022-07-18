@@ -23,12 +23,15 @@ URL_BASE = 'http://gateway.marvel.com/v1/public/'
 ENDPOINT = 'comics'
 PARAMS = dict(ts=TS, apikey=PUBLIC_KEY, hash=HASHED.hexdigest())
 
-
-@csrf_exempt
 # NOTE: Agregamos los siguientes 2 decoradores
-# para que Swagger los tome:
-@swagger_auto_schema(methods=['get'])
-@api_view(['GET'])
+# para que Swagger para que swagger considere 
+# a la función como una vista de API y pueda
+# ser visualizada.
+# NOTE 2: Probar sin descomentar, luego probar
+# descomentando. 
+# @swagger_auto_schema(methods=['get'])
+# @api_view(['GET'])
+@csrf_exempt
 def get_comics(request):
     '''
     ```
