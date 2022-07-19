@@ -30,12 +30,14 @@ from rest_framework.generics import DestroyAPIView
 # de manera más prolija
 
 # Importamos librerías para gestionar los permisos de acceso a nuestras APIs
+from rest_framework import status
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from django.contrib.auth import authenticate
 from rest_framework.authtoken.models import Token
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.parsers import JSONParser
+from rest_framework.renderers import JSONRenderer
 
 # NOTE: Importamos este decorador para poder customizar los 
 # parámetros y responses en Swagger, para aquellas
@@ -153,6 +155,7 @@ class LoginUserAPIView(APIView):
     ```
     '''
     parser_classes = [JSONParser]
+    # renderer_classes = [JSONRenderer]
     authentication_classes = []
     permission_classes = []
 
@@ -205,7 +208,7 @@ class LoginUserAPIView(APIView):
     #         ),
     #     }
     # )
-    def post(self, request,format=None):
+    def post(self, request):
         user_data = {}
         try:
             # Obtenemos los datos del request:
@@ -231,18 +234,24 @@ class LoginUserAPIView(APIView):
                 user_data['is_active'] = account.is_active
                 user_data['token'] = token.key                
                 # Devolvemos la respuesta personalizada
-                return Response(user_data)
+                return Response(
+                    data=user_data, status=status.HTTP_201_CREATED
+                )
             else:
                 # Si las credenciales son invalidas, devolvemos algun mensaje de error:
                 user_data['response'] = 'Error'
                 user_data['error_message'] = 'Credenciales invalidas'
-                return Response(user_data)
+                return Response(
+                    data=user_data, status=status.HTTP_401_UNAUTHORIZED
+                )
 
         except Exception as error:
             # Si aparece alguna excepción, devolvemos un mensaje de error
             user_data['response'] = 'Error'
             user_data['error_message'] = error
-            return Response(user_data)
+            return Response(
+                data=user_data, status=status.HTTP_400_BAD_REQUEST
+            )
 
 # TODO: Agregar las vistas genericas que permitan realizar un CRUD del modelo de wish-list.
 # TODO: Crear una vista generica modificada para traer todos los comics que tiene un usuario.
