@@ -178,6 +178,10 @@ LOGIN_URL = '/admin/login'
 
 
 # API DOCS Settings:
+# https://drf-yasg.readthedocs.io/en/stable/settings.html
+LOGOUT_URL = '/admin/logout'
+
+# Acá van todas las configuraciones para la UI de Swagger.
 SWAGGER_SETTINGS = {
     'SECURITY_DEFINITIONS': {
         'basic': {
@@ -186,9 +190,10 @@ SWAGGER_SETTINGS = {
     },
     "USE_SESSION_AUTH": True,
     'LOGIN_URL': LOGIN_URL,
-    'LOGOUT_URL': '/admin/logout'
+    'LOGOUT_URL': LOGOUT_URL
 }
 
+# Acá van todas las configuraciones para la UI de Redoc.
 REDOC_SETTINGS = {
    'LAZY_RENDERING': False,
 }

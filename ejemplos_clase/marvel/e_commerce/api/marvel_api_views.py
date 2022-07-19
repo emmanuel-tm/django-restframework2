@@ -24,11 +24,8 @@ ENDPOINT = 'comics'
 PARAMS = dict(ts=TS, apikey=PUBLIC_KEY, hash=HASHED.hexdigest())
 
 # NOTE: Agregamos los siguientes 2 decoradores
-# para que Swagger para que swagger considere 
-# a la función como una vista de API y pueda
-# ser visualizada.
-# NOTE 2: Probar sin descomentar, luego probar
-# descomentando. 
+# para que Swagger considere a la función como una 
+# vista de API y pueda ser visualizada en su UI.
 # @swagger_auto_schema(methods=['get'])
 # @api_view(['GET'])
 @csrf_exempt
