@@ -151,7 +151,10 @@ class LoginUserAPIView(APIView):
     Luego con estos datos se consulta el Token generado para el usuario,
     si no lo tiene asignado, se crea automáticamente.
     Esquema de entrada:\n
-    `{"username":"root", "password":12345}`\n
+    {
+        "username": "root",
+        "password": 12345
+    }
     ```
     '''
     parser_classes = [JSONParser]
