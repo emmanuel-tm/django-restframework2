@@ -170,7 +170,7 @@ class LoginUserAPIView(APIView):
                 user_data['user_id'] = account.pk
                 user_data['username'] = username
                 user_data['first_name'] = account.first_name
-                user_data['last_name'] = account.first_name
+                user_data['last_name'] = account.last_name
                 user_data['email']=account.email
                 user_data['is_active'] = account.is_active
                 user_data['token'] = token.key                
